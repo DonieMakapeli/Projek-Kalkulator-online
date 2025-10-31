@@ -4,7 +4,6 @@ const historyList = document.getElementById("history-list");
 const themeToggle = document.getElementById("theme-toggle");
 
 // ---------- TEMA (Dark/Light) ----------
-// Fungsi untuk mengatur tema; simpan preferensi di localStorage
 function setTheme(isDark) {
   if (isDark) {
     document.body.classList.add("dark");
@@ -16,7 +15,7 @@ function setTheme(isDark) {
   localStorage.setItem("darkMode", isDark ? "true" : "false");
 }
 
-// Pasang listener jika tombol ada
+
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
     const currentlyDark = document.body.classList.contains("dark");
@@ -26,7 +25,7 @@ if (themeToggle) {
   console.warn("Theme toggle button not found (id='theme-toggle').");
 }
 
-// Inisialisasi tema berdasarkan localStorage (atau menggunakan prefers-color-scheme jika belum ada)
+
 (function initTheme() {
   const saved = localStorage.getItem("darkMode");
   if (saved === "true") {
@@ -40,7 +39,7 @@ if (themeToggle) {
   }
 })();
 
-// ---------- KALKULATOR & HISTORY ----------
+
 function appendValue(value) {
   result.value += value;
 }
@@ -74,7 +73,7 @@ function addToHistory(expression, outcome) {
   historyList.prepend(listItem);
 }
 
-// ---------- History persistence (opsional tapi berguna) ----------
+
 function saveHistoryToLocal() {
   const items = [];
   document.querySelectorAll("#history-list li").forEach(li => items.push(li.textContent));
@@ -92,3 +91,4 @@ function loadHistoryFromLocal() {
 
 // load history on start
 loadHistoryFromLocal();
+
